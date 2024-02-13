@@ -1,0 +1,98 @@
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.true__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gameCard__container {
+  flex: 0 0 calc(32%);
+  margin-right: 1%;
+  border: 2px solid black;
+  border-radius: 6px;
+  margin: 18px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgb(0, 0, 0, 0.1);
+  transition: 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+.gameCard__container:hover {
+  transform: scale(1.05);
+}
+
+.game__image {
+  width: 100px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.game__details {
+  margin-top: 10px;
+}
+
+.game__title {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.game__play,
+.game__filter {
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.game__play:hover,
+.game__filter:hover {
+  background-color: #2980b9;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
