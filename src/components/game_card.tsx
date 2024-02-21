@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface GameCardProps {
   id: number;
   background_image: string | undefined;
@@ -5,24 +7,21 @@ interface GameCardProps {
 }
 
 const GameCard: React.FC<GameCardProps> = ({ id, background_image, title }) => {
-  // function handlePlay(charactId: number) {
-  //   if (!gameFavourite.includes(charactId)) {
-  //     //if it does not exist, add id to favoruites
-  //     updateFav((prevFav) => {
-  //       const newFav = [...prevFav, charactId];
-  //       console.log(newFav); // Log the updated state inside the callback
-  //       return newFav; // Return the new state
-  //     });
-  //   } else {
-  //     const filter = gameFavourite.filter((id) => id !== charactId);
-  //     updateFav(filter);
-  //     console.log(filter);
-  //   }
-  // }
+  const [imagesNumber, setImagesNumber] = useState(0);
+
+  const handleImage = () => {
+    setImagesNumber(imagesNumber + 1);
+  };
 
   return (
     <div className="gameCard__container">
-      <img src={background_image} alt={title} className="game__image" />
+      <img
+        src={background_image}
+        alt={title}
+        className="game__image"
+        onLoad={handleImage}
+      />
+      {}
       <h3 className="game__title">{title}</h3>
     </div>
   );
