@@ -1,39 +1,44 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import { GameTypes } from "./game-types";
 import GameCard from "./components/game_card";
+import GenreList from "./components/genre_list";
+import { GameTypes } from "./game-types";
 
 function App() {
-  const [games, setGames] = useState<Array<GameTypes>>([]);
-  const [gameFavourites, setgameFavourites] = useState<Array<number>>([]);
+  const [genreGames, setGenreGames] = useState<Array<GameTypes>>([]);
+  const [header, setGenreHeader] = useState<string>("");
 
-  useEffect(() => {
-    const APIcall = async () => {
-      const result = await fetch(
-        "https://api.rawg.io/api/games?key=5746f0879a2a4d9f9871c56fc33e427c"
-      );
-      const res = await result.json();
-      setGames(res.results);
-    };
-    APIcall();
-  }, []);
+  const updateGameGenre = (updateGenre: Array<GameTypes>) => {
+    setGenreGames(updateGenre);
+  };
+
+  const updateHeader = (updateHeader: string) => {
+    setGenreHeader(updateHeader);
+  };
 
   return (
     <>
-      <div className="title__container">
-        <h2>All Games</h2>
-      </div>
       <div className="true__container">
-        {games.map((game) => (
-          <GameCard
-            key={game?.id}
-            id={game?.id}
-            gameFavourite={gameFavourites}
-            updateFav={setgameFavourites}
-            background_image={game?.background_image}
-            title={game?.name}
+        <div className="genre__list">
+          <h2 className="genre__header">Genre</h2>
+          <GenreList
+            onUpdateGenreGame={updateGameGenre}
+            onUpdateHeaderText={updateHeader}
           />
-        ))}
+        </div>
+        <div className="popularGames__list">
+          <h2 className="games__header">{header}</h2>
+          <div className="popularGame__Container">
+            {genreGames.map((game) => (
+              <GameCard
+                key={game?.id}
+                id={game?.id}
+                background_image={game?.background_image}
+                title={game?.name}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
